@@ -1,16 +1,21 @@
+import { useState } from 'react';
+import { Searchbar } from './Searchbar/Searchbar';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { ImageGallery } from './ImageGallery/ImageGallery';
+
 export const App = () => {
+  const [input, setInput] = useState('');
+
+  const handleFormSubmit = inputValue => {
+    setInput(inputValue);
+  };
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
+    <div>
+      <Searchbar onSubmit={handleFormSubmit} />
+      <ImageGallery inputValue={input} />
+      <ToastContainer />
     </div>
   );
 };
