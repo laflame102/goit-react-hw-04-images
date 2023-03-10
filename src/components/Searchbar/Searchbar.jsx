@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 
@@ -36,4 +37,8 @@ export const Searchbar = ({ onSubmit }) => {
       </form>
     </header>
   );
+};
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 };
