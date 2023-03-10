@@ -11,9 +11,13 @@ export const App = () => {
   const [input, setInput] = useState('');
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
+    if (!page) {
+      return;
+    }
+
     const fetchImages = async () => {
       try {
         const response = await pixabay(input, page);
@@ -41,7 +45,7 @@ export const App = () => {
   };
 
   return (
-    <div>
+    <div className="Container">
       <Searchbar onSubmit={handleFormSubmit} />
       {loading && <Loader />}
       <ImageGallery items={images} inputValue={input} />
